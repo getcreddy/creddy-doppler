@@ -64,6 +64,17 @@ func (p *DopplerPlugin) Scopes(ctx context.Context) ([]sdk.ScopeSpec, error) {
 	}, nil
 }
 
+func (p *DopplerPlugin) ConfigSchema(ctx context.Context) ([]sdk.ConfigField, error) {
+	return []sdk.ConfigField{
+		{
+			Name:        "token",
+			Type:        "secret",
+			Description: "Doppler personal or service account token",
+			Required:    true,
+		},
+	}, nil
+}
+
 func (p *DopplerPlugin) Configure(ctx context.Context, configJSON string) error {
 	var config DopplerConfig
 	if err := json.Unmarshal([]byte(configJSON), &config); err != nil {
