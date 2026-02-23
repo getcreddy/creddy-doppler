@@ -75,6 +75,12 @@ func (p *DopplerPlugin) ConfigSchema(ctx context.Context) ([]sdk.ConfigField, er
 	}, nil
 }
 
+func (p *DopplerPlugin) Constraints(ctx context.Context) (*sdk.Constraints, error) {
+	// Doppler service tokens support native expiration via expires_at parameter
+	// No inherent limits from Doppler's side
+	return nil, nil
+}
+
 func (p *DopplerPlugin) Configure(ctx context.Context, configJSON string) error {
 	var config DopplerConfig
 	if err := json.Unmarshal([]byte(configJSON), &config); err != nil {
