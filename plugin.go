@@ -153,7 +153,7 @@ func (p *DopplerPlugin) GetCredential(ctx context.Context, req *sdk.CredentialRe
 
 	return &sdk.Credential{
 		Value:      serviceToken.Key,
-		ExternalID: externalID,
+		Credential: externalID,
 		ExpiresAt:  expiresAt,
 		Metadata: map[string]string{
 			"project": project,
